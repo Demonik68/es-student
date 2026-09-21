@@ -1,0 +1,24 @@
+задание: 2.1.1
+проект: 211-command-usb
+устройство: 2e8a:000a
+серийный номер: E6616408432A1534
+порт: COM16
+начало: 2026-09-21T20:36:21
+   0.000 --> enable
+   0.130 <-- enable
+   0.130 <-- inf handle_command:31 led on
+   2.161 --> disable
+   2.311 <-- disable
+   2.311 <-- inf handle_command:36 led off
+   4.344 --> info
+   4.431 <-- info
+   4.432 <-- project: 211-command-usb
+   4.432 <-- repo: https://github.com/Demonik68/es-student
+   4.433 <-- board: pico
+   4.433 <-- serial: E6616408432A1534
+   4.434 <-- chip: manufacturer 0x927, part 0x0002, revision 2
+   4.434 <-- pico-sdk: 2.3.0
+   6.442 --> nosuchcommand
+   6.713 <-- nosuchcommand
+   6.713 <-- err handle_command:48 unknown command: nosuchcommand
+итог: отправлено команд 4, принято строк 13
