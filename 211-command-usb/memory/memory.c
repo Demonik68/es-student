@@ -3,6 +3,9 @@
 #include <stdint.h>
 #include "hardware/regs/addressmap.h"
 #include "pico/stdlib.h"
+#include "command.h"
+#include <stdlib.h>
+#include "device.h"
 
 
 extern char __flash_binary_start;
@@ -60,4 +63,49 @@ void mem_info(void)
     printf("  flash free  %8d of %d\n", flash_free_size, PICO_FLASH_SIZE_BYTES); // итог: свободно во флеш-памяти из всего её объёма
     printf("  ram used    %8d = data %d + bss %d\n", ram_used_size, data_ram_size, bss_size);                                 // итог: занято в ОЗУ — .data и .bss
     printf("  ram free    %8d for heap and %d for stack\n", heap_size, stack_size); // итог: свободно в ОЗУ — под кучу и под стек
+}
+
+int main(void);
+
+uint32_t data_variable = 100;
+uint32_t bss_variable;
+
+void fw_info(void)
+{
+    data_variable++;
+    bss_variable++;
+
+    uint32_t stack_variable = 1946;
+    uint32_t *heap_variable = malloc(sizeof(uint32_t));
+
+    if (heap_variable != NULL)
+    {
+        *heap_variable = 1951;
+    }
+
+    printf("object          address     value\n");
+
+    uint16_t *main_code = (uint16_t *)((uintptr_t)main & ~1u);
+    uint16_t *fw_info_code = (uint16_t *)((uintptr_t)fw_info & ~1u);
+
+    printf("%-15s 0x%08x  0x%04x\n", "main", main, *main_code);
+    printf("%-15s 0x%08x  0x%04x\n", "fw_info", fw_info, *fw_info_code);
+
+    printf("%-15s 0x%08x\n", "commands", commands);
+
+    for (int i = 0; i < command_count; i++)
+    {
+        printf("- %-13s 0x%08x\n", commands[i].name, commands[i].handler);
+    }
+
+    printf("%-15s 0x%08x  %s\n", "DEVICE_PROJECT", &DEVICE_PROJECT, DEVICE_PROJECT);
+    printf("%-15s 0x%08x  %s\n", "DEVICE_BOARD", &DEVICE_BOARD, DEVICE_BOARD);
+
+    printf("%-15s 0x%08x  %d\n", "data_variable", &data_variable, data_variable);
+    printf("%-15s 0x%08x  %d\n", "bss_variable", &bss_variable, bss_variable);
+
+    printf("%-15s 0x%08x  %d\n", "stack_variable", &stack_variable, stack_variable);
+    printf("%-15s 0x%08x  %d\n", "heap_variable", heap_variable, *heap_variable);
+
+    free(heap_variable);
 }
