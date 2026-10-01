@@ -1,0 +1,24 @@
+задание: 2.2.1
+проект: 221-command-time
+устройство: 2e8a:000a
+серийный номер: 07230C15195058CD
+порт: COM18
+начало: 2026-10-01T11:13:21
+   0.000 --> clk_info
+   0.176 <-- clk_info
+   0.176 <-- signal     set_khz measured_khz
+   0.177 <-- clk_ref      12000        12001
+   0.178 <-- clk_sys     125000       125000
+   0.179 <-- clk_peri    125000       125000
+   0.180 <-- clk_usb      48000        48000
+   0.181 <-- clk_adc      48000        48000
+   0.183 <-- rosc             -         5657
+   2.007 --> info
+   2.103 <-- info
+   2.103 <-- project: 221-command-time
+   2.104 <-- repo: https://github.com/Demonik68/es-student
+   2.104 <-- board: pico
+   2.104 <-- serial: 07230C15195058CD
+   2.105 <-- chip: manufacturer 0x927, part 0x0002, revision 2
+   2.105 <-- pico-sdk: 2.3.0
+итог: отправлено команд 2, принято строк 15
