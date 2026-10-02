@@ -1,0 +1,70 @@
+задание: 2.2.5
+проект: 221-command-time
+устройство: 2e8a:000a
+серийный номер: 07230C15195058CD
+порт: COM18
+начало: 2026-10-03T00:04:49
+   0.000 --> clk_info
+   0.001 <-- clk_info
+   0.001 <-- signal     set_khz measured_khz
+   0.003 <-- clk_ref      12000        12001
+   0.004 <-- clk_sys     125000       125000
+   0.005 <-- clk_peri    125000       125000
+   0.006 <-- clk_usb      48000        48000
+   0.007 <-- clk_adc      48000        48000
+   0.008 <-- rosc             -         5663
+   1.026 --> main_time_reset
+   1.026 <-- main_time_reset
+   1.027 <-- max reset
+   3.060 --> main_time_exec
+   3.061 <-- main_time_exec
+   3.062 <-- iteration avg 2.54 us, max 163 us
+   4.071 --> calc_pi
+   4.071 <-- calc_pi
+   8.770 <-- pi: 3.14159165
+   8.770 <-- time: 4698 ms
+  10.196 --> clk_sys_low
+  10.197 <-- clk_sys_low
+  10.198 <-- inf clk_sys_set:36 clk_sys 62500 kHz
+  11.207 --> clk_info
+  11.208 <-- clk_info
+  11.208 <-- signal     set_khz measured_khz
+  11.209 <-- clk_ref      12000        12002
+  11.211 <-- clk_sys      62500        62500
+  11.212 <-- clk_peri     48000        48000
+  11.213 <-- clk_usb      48000        48000
+  11.214 <-- clk_adc      48000        48000
+  11.215 <-- rosc             -         5672
+  12.235 --> uptime
+  12.236 <-- uptime
+  12.236 <-- uptime: 22253 ms
+  14.261 --> uptime
+  14.262 <-- uptime
+  14.262 <-- uptime: 24279 ms
+  15.278 --> main_time_reset
+  15.279 <-- main_time_reset
+  15.280 <-- max reset
+  17.320 --> main_time_exec
+  17.322 <-- main_time_exec
+  17.323 <-- iteration avg 5.18 us, max 241 us
+  18.348 --> calc_pi
+  18.349 <-- calc_pi
+  27.747 <-- pi: 3.14159165
+  27.747 <-- time: 9397 ms
+  29.381 --> clk_sys_default
+  29.383 <-- clk_sys_default
+  29.384 <-- inf clk_sys_set:36 clk_sys 125000 kHz
+  30.414 --> clk_info
+  30.414 <-- clk_info
+  30.414 <-- signal     set_khz measured_khz
+  30.415 <-- clk_ref      12000        12001
+  30.417 <-- clk_sys     125000       125000
+  30.418 <-- clk_peri     48000        48000
+  30.419 <-- clk_usb      48000        48000
+  30.420 <-- clk_adc      48000        48000
+  30.421 <-- rosc             -         5664
+  31.442 --> calc_pi
+  31.442 <-- calc_pi
+  36.141 <-- pi: 3.14159165
+  36.142 <-- time: 4698 ms
+итог: отправлено команд 14, принято строк 49
