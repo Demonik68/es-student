@@ -6,3 +6,4 @@
 [![2.2.5 Частота ядра](https://github.com/Demonik68/es-student/actions/workflows/check-2-2-5.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-2-5.yml)
 
 [![2.3.1 Протокол и API](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-1.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-1.yml)
+[![2.3.2 Задача светодиода](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-2.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-2.yml)
