@@ -11,6 +11,7 @@
 #include "led-task.h"
 #include "button-task.h"
 #include "pi-task.h"
+#include "firmware.h"
 
 #define CALC_PI_DEFAULT_TERMS 1000000u
 
@@ -73,8 +74,8 @@ static void command_info(const command_t *command)
     (void)command;
     device_info_t info;
     device_get_info(&info);
-    printf("name: %s\n", "firmware-template");
-    printf("version: %s\n", "1.2.0");
+    printf("name: %s\n", FIRMWARE_NAME);
+    printf("version: %s\n", FIRMWARE_VERSION);
     printf("project: %s\n", DEVICE_PROJECT);
     printf("repo: %s\n", DEVICE_REPO);
     printf("board: %s\n", info.board);

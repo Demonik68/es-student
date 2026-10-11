@@ -1,13 +1,13 @@
 #pragma once
 
+
+#include "firmware.h"
 #include <stdint.h>
 
 
-#define DEVICE_NAME "es-led-module"
-#define FIRMWARE_VERSION "1.2.0"
-
-#define DEVICE_PROJECT "231-firmware-template"
-#define DEVICE_REPO "https://github.com/Demonik68/es-student"
+#define DEVICE_NAME FIRMWARE_NAME
+#define DEVICE_PROJECT FIRMWARE_PROJECT
+#define DEVICE_REPO FIRMWARE_REPO
 
 #ifndef DEVICE_BOARD
 #define DEVICE_BOARD "unknown"

@@ -6,6 +6,7 @@
 #include "button-task.h"
 #include "pi-task.h"
 #include "log.h"
+#include "firmware.h"
 
 
 typedef enum {
@@ -28,7 +29,7 @@ int main(void)
     profiling_stopwatch_init(STOPWATCH_LED, "led");
     profiling_stopwatch_init(STOPWATCH_BUTTON, "button");
     profiling_stopwatch_init(STOPWATCH_PI, "pi");
-    LOG_INF("%s %s\n", "es-led-module", "1.2.0");
+    LOG_INF("%s %s\n", FIRMWARE_NAME, FIRMWARE_VERSION);
 
     while (true)
     {
