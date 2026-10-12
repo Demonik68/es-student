@@ -3,7 +3,7 @@
 устройство: 2e8a:000a
 серийный номер: 07230C15195058CD
 порт: COM18
-начало: 2026-10-12T08:52:16
+начало: 2026-10-12T09:04:52
    0.000 --> 
    0.561 --> help
    0.562 <-- help
@@ -19,119 +19,119 @@
    0.623 <-- led_blink        blink LED
    0.623 <-- led_period       set blink period: led_period <period_ms>
    0.623 <-- button           button state and press count
-   1.618 --> info
-   1.681 <-- info
-   1.681 <-- name: firmware-template
-   1.681 <-- version: 1.2.0
-   1.681 <-- project: 231-firmware-template
-   1.681 <-- repo: https://github.com/Demonik68/es-student
-   1.681 <-- board: pico
-   1.681 <-- serial: 07230C15195058CD
-   1.681 <-- chip: manufacturer 0x927, part 0x0002, revision 2
-   1.681 <-- pico-sdk: 2.3.0
-   2.675 --> uptime
-   2.737 <-- uptime
-   2.737 <-- uptime: 352450 ms
-   3.733 -->    uptime    
-   3.796 <-- uptime
-   3.796 <-- uptime: 353508 ms
-   4.736 --> upx<BS>time
-   4.798 <-- upx<BS> <BS>time
-   4.798 <-- uptime: 354511 ms
-   5.800 --> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-   5.859 <-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-   5.859 <-- error: command longer than 63 characters or 4 arguments
-   6.854 --> led_period 1 2 3 4 5
-   6.915 <-- led_period 1 2 3 4 5
-   6.916 <-- error: command longer than 63 characters or 4 arguments
-   7.916 --> blink
-   7.977 <-- blink
-   7.977 <-- error: unknown command 'blink', try help
-   8.971 --> led_enable
-   9.035 <-- led_enable
-   9.035 <-- led: on, period 1000 ms
-  10.030 --> led_disable
-  10.092 <-- led_disable
-  10.092 <-- led: off, period 1000 ms
-  11.089 --> led_period 2000
-  11.150 <-- led_period 2000
-  11.150 <-- led: off, period 2000 ms
-  12.145 --> led_blink
-  12.207 <-- led_blink
-  12.207 <-- led: blink, period 2000 ms
-  13.200 --> led_period
-  13.263 <-- led_period
-  13.263 <-- error: usage led_period <period_ms>
-  14.259 --> led_period 5x
-  14.320 <-- led_period 5x
-  14.321 <-- error: usage led_period <period_ms>
-  15.259 --> led_period -1
-  15.321 <-- led_period -1
-  15.321 <-- error: usage led_period <period_ms>
-  16.314 --> led_period 4294967296
-  16.376 <-- led_period 4294967296
-  16.376 <-- error: usage led_period <period_ms>
-  17.371 --> led_period 0
-  17.433 <-- led_period 0
-  17.433 <-- error: period_ms must be greater than 0
-  18.427 --> led_period 1000
-  18.489 <-- led_period 1000
-  18.489 <-- led: blink, period 1000 ms
-  19.482 --> button
-  19.543 <-- button
-  19.543 <-- button: released, presses 1
-  20.544 --> pi
-  20.608 <-- pi
-  20.608 <-- pi: 3.141591654 in 4729 ms
-  21.603 --> pi_start 0
-  21.664 <-- pi_start 0
-  21.664 <-- error: terms must be greater than 0
-  22.664 --> pi_start 5x
-  22.728 <-- pi_start 5x
-  22.728 <-- error: usage pi_start [terms]
-  23.726 --> pi_start 10 20
-  23.789 <-- pi_start 10 20
-  23.789 <-- error: usage pi_start [terms]
-  24.785 --> profiling_reset
-  24.847 <-- profiling_reset
-  24.848 <-- profiling reset
-  25.840 --> pi_start
-  25.903 <-- pi_start
-  25.903 <-- pi: started, 1000000 terms
-  26.343 --> pi
-  26.404 <-- pi
-  26.404 <-- pi: running
-  26.902 --> pi_start 1000
-  26.964 <-- pi_start 1000
-  26.964 <-- error: pi is busy
-  27.464 --> uptime
-  27.527 <-- uptime
-  27.527 <-- uptime: 377246 ms
-  28.025 --> p
-  34.068 --> i
-  34.132 <-- pi
-  34.132 <-- pi: 3.141591654 in 4730 ms
-  35.125 --> profiling
-  35.126 <-- profiling
-  35.126 <-- loop       count 657735     mean 9.89 us  max 621 us
-  35.126 <-- command    count 657735     mean 2.24 us  max 180 us
-  35.127 <-- led        count 657735     mean 1.22 us  max 20 us
-  35.127 <-- button     count 657735     mean 0.78 us  max 25 us
-  35.187 <-- pi         count 657735     mean 4.10 us  max 486 us
-  36.182 --> pi_start 100000
-  36.244 <-- pi_start 100000
-  36.244 <-- pi: started, 100000 terms
-  37.239 --> pi
-  37.301 <-- pi
-  37.301 <-- pi: 3.141582654 in 471 ms
-  38.301 --> profiling_reset
-  38.362 <-- profiling_reset
-  38.362 <-- profiling reset
-  39.361 --> profiling
-  39.362 <-- profiling
-  39.362 <-- loop       count 123272     mean 6.33 us  max 95 us
-  39.362 <-- command    count 123272     mean 2.24 us  max 76 us
-  39.362 <-- led        count 123272     mean 1.22 us  max 26 us
-  39.362 <-- button     count 123272     mean 0.78 us  max 19 us
-  39.422 <-- pi         count 123272     mean 0.54 us  max 6 us
+   1.562 --> info
+   1.625 <-- info
+   1.625 <-- name: firmware-template
+   1.625 <-- version: 1.2.0
+   1.625 <-- project: 231-firmware-template
+   1.625 <-- repo: https://github.com/Demonik68/es-student
+   1.625 <-- board: pico
+   1.625 <-- serial: 07230C15195058CD
+   1.625 <-- chip: manufacturer 0x927, part 0x0002, revision 2
+   1.625 <-- pico-sdk: 2.3.0
+   2.625 --> uptime
+   2.687 <-- uptime
+   2.687 <-- uptime: 8280 ms
+   3.633 -->    uptime    
+   3.695 <-- uptime
+   3.695 <-- uptime: 9288 ms
+   4.692 --> upx<BS>time
+   4.754 <-- upx<BS> <BS>time
+   4.754 <-- uptime: 10347 ms
+   5.755 --> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   5.815 <-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   5.815 <-- error: command longer than 63 characters or 4 arguments
+   6.811 --> led_period 1 2 3 4 5
+   6.875 <-- led_period 1 2 3 4 5
+   6.875 <-- error: command longer than 63 characters or 4 arguments
+   7.862 --> blink
+   7.924 <-- blink
+   7.924 <-- error: unknown command 'blink', try help
+   8.925 --> led_enable
+   8.986 <-- led_enable
+   8.986 <-- led: on, period 1000 ms
+   9.982 --> led_disable
+  10.045 <-- led_disable
+  10.045 <-- led: off, period 1000 ms
+  10.986 --> led_period 2000
+  11.048 <-- led_period 2000
+  11.048 <-- led: off, period 2000 ms
+  12.043 --> led_blink
+  12.104 <-- led_blink
+  12.105 <-- led: blink, period 2000 ms
+  13.046 --> led_period
+  13.108 <-- led_period
+  13.109 <-- error: usage led_period <period_ms>
+  14.050 --> led_period 5x
+  14.112 <-- led_period 5x
+  14.112 <-- error: usage led_period <period_ms>
+  15.107 --> led_period -1
+  15.170 <-- led_period -1
+  15.170 <-- error: usage led_period <period_ms>
+  16.164 --> led_period 4294967296
+  16.226 <-- led_period 4294967296
+  16.226 <-- error: usage led_period <period_ms>
+  17.220 --> led_period 0
+  17.282 <-- led_period 0
+  17.283 <-- error: period_ms must be greater than 0
+  18.275 --> led_period 1000
+  18.338 <-- led_period 1000
+  18.338 <-- led: blink, period 1000 ms
+  19.278 --> button
+  19.340 <-- button
+  19.340 <-- button: released, presses 0
+  20.330 --> pi
+  20.393 <-- pi
+  20.393 <-- pi: not started
+  21.332 --> pi_start 0
+  21.393 <-- pi_start 0
+  21.393 <-- error: terms must be greater than 0
+  22.391 --> pi_start 5x
+  22.454 <-- pi_start 5x
+  22.454 <-- error: usage pi_start [terms]
+  23.394 --> pi_start 10 20
+  23.455 <-- pi_start 10 20
+  23.455 <-- error: usage pi_start [terms]
+  24.446 --> profiling_reset
+  24.509 <-- profiling_reset
+  24.509 <-- profiling reset
+  25.507 --> pi_start
+  25.568 <-- pi_start
+  25.568 <-- pi: started, 1000000 terms
+  26.066 --> pi
+  26.127 <-- pi
+  26.127 <-- pi: running
+  26.626 --> pi_start 1000
+  26.687 <-- pi_start 1000
+  26.688 <-- error: pi is busy
+  27.186 --> uptime
+  27.248 <-- uptime
+  27.248 <-- uptime: 32848 ms
+  27.746 --> p
+  33.807 --> i
+  33.869 <-- pi
+  33.869 <-- pi: 3.141591654 in 4730 ms
+  34.865 --> profiling
+  34.867 <-- profiling
+  34.867 <-- loop       count 666953     mean 9.84 us  max 606 us
+  34.867 <-- command    count 666953     mean 2.24 us  max 255 us
+  34.867 <-- led        count 666953     mean 1.22 us  max 24 us
+  34.867 <-- button     count 666953     mean 0.78 us  max 19 us
+  34.927 <-- pi         count 666953     mean 4.05 us  max 488 us
+  35.925 --> pi_start 100000
+  35.986 <-- pi_start 100000
+  35.986 <-- pi: started, 100000 terms
+  36.980 --> pi
+  37.042 <-- pi
+  37.042 <-- pi: 3.141582654 in 471 ms
+  38.036 --> profiling_reset
+  38.098 <-- profiling_reset
+  38.098 <-- profiling reset
+  39.093 --> profiling
+  39.094 <-- profiling
+  39.094 <-- loop       count 122961     mean 6.33 us  max 116 us
+  39.094 <-- command    count 122961     mean 2.24 us  max 109 us
+  39.094 <-- led        count 122961     mean 1.22 us  max 22 us
+  39.094 <-- button     count 122961     mean 0.78 us  max 2 us
+  39.155 <-- pi         count 122961     mean 0.54 us  max 19 us
 итог: отправлено кадров 36, принято строк 94
