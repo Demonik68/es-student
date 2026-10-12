@@ -1,11 +1,11 @@
 #include "api.h"
 #include "led-task.h"
 #include "pico/stdlib.h"
-#include "profiling.h"
-#include "stdio-text-protocol.h"
+#include "profiling/profiling.h"
+#include "stdio-text-protocol/stdio-text-protocol.h"
 #include "button-task.h"
 #include "pi-task.h"
-#include "log.h"
+#include "logging/log.h"
 #include "firmware.h"
 
 
