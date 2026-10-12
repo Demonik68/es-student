@@ -11,3 +11,4 @@
 [![2.3.4 Расчёт по шагам](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-4.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-4.yml)
 [![2.3.5 Данные вместо печати](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-5.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-5.yml)
 [![2.3.6 Библиотеки](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-6.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-6.yml)
+[![2.3.7 Железо и логика](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-7.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-7.yml)
