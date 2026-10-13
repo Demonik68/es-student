@@ -6,6 +6,7 @@
 
 
 #define DEBOUNCE_US 20000
+#define LONG_PRESS_US 1000000 //Порог долгого нажатия 1 с
 
 typedef enum {
     BUTTON_STATE_RELEASED,
@@ -18,16 +19,21 @@ typedef struct {
     button_state_t state;
     uint64_t transition_started_us;
     uint32_t press_count;
+    uint64_t pressed_us;
     button_task_callback_t callback;
+    button_task_callback_t long_callback;
+    bool long_reported;
 } button_t;
 
 static button_t buttons[PLATFORM_BUTTON_COUNT];
 
-void button_task_init(platform_button_t button, button_task_callback_t on_press)
+void button_task_init(platform_button_t button, button_task_callback_t on_press,button_task_callback_t on_long_press)
 {
     buttons[button].state = BUTTON_STATE_RELEASED;
     buttons[button].press_count = 0;
     buttons[button].callback = on_press;
+    buttons[button].long_callback = on_long_press;
+    buttons[button].long_reported = false;
 }
 
 static void button_handle(platform_button_t number)
@@ -54,7 +60,9 @@ static void button_handle(platform_button_t number)
             {
                 button->state = BUTTON_STATE_PRESSED;
                 button->press_count++;
-                if (button->callback != NULL)
+                button->pressed_us = now_us;
+                button->long_reported = false;
+                if (button->long_callback == NULL && button->callback != NULL)
                 {
                     button->callback();
                 }
@@ -66,6 +74,11 @@ static void button_handle(platform_button_t number)
                 button->transition_started_us = now_us;
                 button->state = BUTTON_STATE_RELEASING;
             }
+            else if (button->long_callback != NULL && !button->long_reported && now_us - button->pressed_us >= LONG_PRESS_US)
+            {
+                button->long_reported = true;
+                button->long_callback();
+            }
             break;
         case BUTTON_STATE_RELEASING:
             if (pressed)
@@ -75,6 +88,10 @@ static void button_handle(platform_button_t number)
             else if (now_us - button->transition_started_us >= DEBOUNCE_US)
             {
                 button->state = BUTTON_STATE_RELEASED;
+                if (button->long_callback != NULL && !button->long_reported && button->callback != NULL)
+                {
+                    button->callback();
+                }
             }
             break;
     }

@@ -14,3 +14,4 @@
 [![2.3.7 Железо и логика](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-7.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-7.yml)
 [![2.3.8 Приёмка прибора](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-8.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-8.yml)
 [![2.3.9 Изменение требований](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-9.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-9.yml)
+[![2.3.9д Долгое нажатие](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-9d.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-9d.yml)

@@ -30,8 +30,10 @@ int main(void)
     profiling_stopwatch_init(STOPWATCH_BUTTON, "button");
     profiling_stopwatch_init(STOPWATCH_PI, "pi");
     LOG_INF("%s %s\n", FIRMWARE_NAME, FIRMWARE_VERSION);
-    button_task_init(PLATFORM_BUTTON_1, led_task_next_state);  
-    button_task_init(PLATFORM_BUTTON_2, led_task_next_period);
+    // короткое нажатие первой кнопки — следующее состояние светодиода, долгое — мигание
+    button_task_init(PLATFORM_BUTTON_1, led_task_next_state, led_task_blink);  
+    // у второй кнопки долгого действия нет
+    button_task_init(PLATFORM_BUTTON_2, led_task_next_period, NULL);
 
     while (1)
     {
