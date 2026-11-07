@@ -8,7 +8,7 @@
 #include "platform/platform.h"
 #include "logging/log.h"
 #include "firmware.h"
-
+#include "telemetry-task/telemetry-task.h"
 
 typedef enum {
     STOPWATCH_LOOP,
@@ -16,11 +16,13 @@ typedef enum {
     STOPWATCH_LED,
     STOPWATCH_BUTTON,
     STOPWATCH_PI,
+    STOPWATCH_TELEMETRY,
 } stopwatch_id_t;
 
 
 int main(void)
 {
+    telemetry_task_init(api_print_telemetry);
     platform_init();
     led_task_init();
     stdio_text_protocol_init();
@@ -30,6 +32,7 @@ int main(void)
     profiling_stopwatch_init(STOPWATCH_LED, "led");
     profiling_stopwatch_init(STOPWATCH_BUTTON, "button");
     profiling_stopwatch_init(STOPWATCH_PI, "pi");
+    profiling_stopwatch_init(STOPWATCH_TELEMETRY, "telemetry");
     LOG_INF("%s %s\n", FIRMWARE_NAME, FIRMWARE_VERSION);
 
     while (1)
@@ -50,6 +53,11 @@ int main(void)
         profiling_start(STOPWATCH_PI);
         pi_task_handle();
         profiling_stop(STOPWATCH_PI);
+
+        profiling_start(STOPWATCH_TELEMETRY);
+        telemetry_task_handle();
+        profiling_stop(STOPWATCH_TELEMETRY);
+
 
         profiling_start(STOPWATCH_COMMAND);
         const command_t *command = stdio_text_protocol_handle();

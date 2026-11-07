@@ -1,4 +1,5 @@
 #include "api/api-commands.h"
+#include "api/api.h"
 
 #include <errno.h>
 #include <stdint.h>
@@ -13,6 +14,7 @@
 #include "firmware.h"
 
 #include "platform/platform.h"
+#include "telemetry-task/telemetry-task.h"
 
 #define CALC_PI_DEFAULT_TERMS 1000000u
 
@@ -210,6 +212,54 @@ static void cmd_get_temp(const command_t *cmd)
     printf("temp: %.1f C\n", platform_temp_read());
 }
 
+#define TELEMETRY_DEFAULT_PERIOD_MS 100U
+
+void api_print_telemetry(const telemetry_record_t *record)
+{
+    if (record == NULL)
+    {
+        return;
+    }
+
+    printf("tm: %llu %.3f %.1f\n",
+           (unsigned long long)record->time_us,
+           (double)record->voltage_v,
+           (double)record->temp_c);
+}
+
+static void cmd_tm_start(const command_t *cmd)
+{
+    uint32_t period_ms = TELEMETRY_DEFAULT_PERIOD_MS;
+
+    if (cmd->argc > 1)
+    {
+        printf("error: usage tm_start [<period_ms>]\n");
+        return;
+    }
+
+    if (cmd->argc == 1 && !parse_u32(cmd->argv[0], &period_ms))
+    {
+        printf("error: usage tm_start [<period_ms>]\n");
+        return;
+    }
+
+    if (!telemetry_task_start(period_ms))
+    {
+        printf("error: period_ms must be at least 10\n");
+        return;
+    }
+
+    printf("telemetry: started, period %lu ms\n",
+           (unsigned long)period_ms);
+}
+
+static void cmd_tm_stop(const command_t *cmd)
+{
+    (void)cmd;
+
+    telemetry_task_stop();
+    printf("telemetry: stopped\n");
+}
 
 const api_command_t api_commands[] = {
     { "info", "device passport", command_info },
@@ -223,8 +273,10 @@ const api_command_t api_commands[] = {
     { "led_blink", "blink LED", command_led_blink },
     { "led_period", "set blink period: led_period <period_ms>", command_led_period },
     { "button", "button state and press count", command_button },
-    { "get_voltage",     "voltage on GP26, ADC input 0", cmd_get_voltage },
-    { "get_temp",        "chip temperature, degrees Celsius", cmd_get_temp },
+    { "get_voltage", "voltage on GP26, ADC input 0", cmd_get_voltage },
+    { "get_temp", "chip temperature, degrees Celsius", cmd_get_temp },
+    { "tm_start", "start telemetry stream [period_ms]", cmd_tm_start },
+    { "tm_stop", "stop telemetry stream", cmd_tm_stop },
 };
 
 
