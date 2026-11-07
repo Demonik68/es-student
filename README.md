@@ -1,4 +1,29 @@
 # es-student
+[![1.1.1 Установка инструментов](https://github.com/Demonik68/es-student/actions/workflows/check-1-1-1.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-1-1-1.yml)
+[![1.1.2 Первый проект](https://github.com/Demonik68/es-student/actions/workflows/check-1-1-2.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-1-1-2.yml)
+[![1.1.3 Запуск прошивки](https://github.com/Demonik68/es-student/actions/workflows/check-1-1-3.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-1-1-3.yml)
+[![1.1.4 Создание репозитория курса](https://github.com/Demonik68/es-student/actions/workflows/check-1-1-4.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-1-1-4.yml)
+[![1.1.5 Настройка автоматической проверки](https://github.com/Demonik68/es-student/actions/workflows/check-1-1-5.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-1-1-5.yml)
+
+[![1.2.1 Мигание светодиодом через регистр](https://github.com/Demonik68/es-student/actions/workflows/check-1-2-1.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-1-2-1.yml)
+[![1.2.2 Светодиод и кнопка](https://github.com/Demonik68/es-student/actions/workflows/check-1-2-2.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-1-2-2.yml)
+[![1.2.3 Программное избавление от дребезга](https://github.com/Demonik68/es-student/actions/workflows/check-1-2-3.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-1-2-3.yml)
+
+[![1.3.1 Hello World USB COM](https://github.com/Demonik68/es-student/actions/workflows/check-1-3-1.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-1-3-1.yml)
+[![1.3.2 Скрипт проверки на устройстве](https://github.com/Demonik68/es-student/actions/workflows/check-1-3-2.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-1-3-2.yml)
+[![1.3.3 Вывод состояния светодиода](https://github.com/Demonik68/es-student/actions/workflows/check-1-3-3.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-1-3-3.yml)
+[![1.3.4 Светодиод и USB](https://github.com/Demonik68/es-student/actions/workflows/check-1-3-4.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-1-3-4.yml)
+[![1.3.5 Модуль светодиода](https://github.com/Demonik68/es-student/actions/workflows/check-1-3-5.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-1-3-5.yml)
+[![1.3.6 Макросы логирования](https://github.com/Demonik68/es-student/actions/workflows/check-1-3-6.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-1-3-6.yml)
+[![1.3.7 Паспорт устройства](https://github.com/Demonik68/es-student/actions/workflows/check-1-3-7.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-1-3-7.yml)
+
+[![2.1.1 Многосимвольные команды](https://github.com/Demonik68/es-student/actions/workflows/check-2-1-1.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-1-1.yml)
+[![2.1.2 Таблица команд](https://github.com/Demonik68/es-student/actions/workflows/check-2-1-2.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-1-2.yml)
+[![2.1.3 Системная память](https://github.com/Demonik68/es-student/actions/workflows/check-2-1-3.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-1-3.yml)
+[![2.1.4 Память программы](https://github.com/Demonik68/es-student/actions/workflows/check-2-1-4.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-1-4.yml)
+[![2.1.5 Память массивов и структур](https://github.com/Demonik68/es-student/actions/workflows/check-2-1-5.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-1-5.yml)
+[![2.1.6 Чтение по адресу](https://github.com/Demonik68/es-student/actions/workflows/check-2-1-6.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-1-6.yml)
+
 [![2.2.1 Тактовые частоты](https://github.com/Demonik68/es-student/actions/workflows/check-2-2-1.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-2-1.yml)
 [![2.2.2 Неблокирующее мигание](https://github.com/Demonik68/es-student/actions/workflows/check-2-2-2.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-2-2.yml)
 [![2.2.3 Цена вычислений](https://github.com/Demonik68/es-student/actions/workflows/check-2-2-3.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-2-3.yml)
@@ -15,3 +40,5 @@
 [![2.3.8 Приёмка прибора](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-8.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-8.yml)
 [![2.3.9 Изменение требований](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-9.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-9.yml)
 [![2.3.9д Долгое нажатие](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-9d.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-9d.yml)
+
+[![3.1.1 Измерение напряжения](https://github.com/Demonik68/es-student/actions/workflows/check-3-1-1.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-3-1-1.yml)
