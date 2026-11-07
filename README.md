@@ -42,3 +42,4 @@
 [![2.3.9д Долгое нажатие](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-9d.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-2-3-9d.yml)
 
 [![3.1.1 Измерение напряжения](https://github.com/Demonik68/es-student/actions/workflows/check-3-1-1.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-3-1-1.yml)
+[![3.1.2 Измерение температуры](https://github.com/Demonik68/es-student/actions/workflows/check-3-1-2.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-3-1-2.yml)
