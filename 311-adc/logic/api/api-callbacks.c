@@ -261,6 +261,22 @@ static void cmd_tm_stop(const command_t *cmd)
     printf("telemetry: stopped\n");
 }
 
+static void cmd_charge_on(const command_t *cmd)
+{
+    (void)cmd;
+
+    platform_charge_set(true);
+    printf("charge: on\n");
+}
+
+static void cmd_charge_off(const command_t *cmd)
+{
+    (void)cmd;
+
+    platform_charge_set(false);
+    printf("charge: off\n");
+}
+
 const api_command_t api_commands[] = {
     { "info", "device passport", command_info },
     { "uptime", "time since reset", command_uptime },
@@ -277,6 +293,8 @@ const api_command_t api_commands[] = {
     { "get_temp", "chip temperature, degrees Celsius", cmd_get_temp },
     { "tm_start", "start telemetry stream [period_ms]", cmd_tm_start },
     { "tm_stop", "stop telemetry stream", cmd_tm_stop },
+    { "charge_on", "set GP22 high; charge RC capacitor", cmd_charge_on },
+    { "charge_off", "set GP22 low; discharge RC capacitor", cmd_charge_off },
 };
 
 
