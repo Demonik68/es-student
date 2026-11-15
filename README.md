@@ -46,3 +46,5 @@
 [![3.1.3 Телеметрия измерений](https://github.com/Demonik68/es-student/actions/workflows/check-3-1-3.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-3-1-3.yml)
 [![3.1.4 Считывание данных в Python](https://github.com/Demonik68/es-student/actions/workflows/check-3-1-4.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-3-1-4.yml)
 [![3.1.5 Исследование RC-цепи](https://github.com/Demonik68/es-student/actions/workflows/check-3-1-5.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-3-1-5.yml)
+
+[![3.2.1 Индикатор записи](https://github.com/Demonik68/es-student/actions/workflows/check-3-2-1.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-3-2-1.yml)
