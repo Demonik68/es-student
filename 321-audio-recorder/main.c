@@ -7,6 +7,7 @@
 #include "platform/platform.h"
 #include "profiling/profiling.h"
 #include "stdio-text-protocol/stdio-text-protocol.h"
+#include "block-task/block-task.h"
 
 typedef enum {
     STOPWATCH_LOOP,
@@ -59,6 +60,7 @@ int main(void)
         profiling_start(STOPWATCH_TELEMETRY);
         telemetry_task_handle();
         profiling_stop(STOPWATCH_TELEMETRY);
+        block_task_handle();
 
         profiling_stop(STOPWATCH_LOOP);
     }

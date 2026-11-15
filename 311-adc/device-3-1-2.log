@@ -3,28 +3,50 @@
 устройство: 2e8a:000a
 серийный номер: 07230C15195058CD
 порт: COM18
-начало: 2026-11-15T15:33:00
+начало: 2026-11-07T14:13:02
    0.000 --> 
-   0.550 --> info
-   0.612 <-- info
-   0.612 <-- name: es-recorder
-   0.612 <-- version: 1.0.0
-   0.612 <-- project: 321-audio-recorder
-   0.612 <-- repo: https://github.com/Demonik68/es-student
-   0.612 <-- board: pico
-   0.613 <-- serial: 07230C15195058CD
-   0.613 <-- chip: manufacturer 0x927, part 0x0002, revision 2
-   0.613 <-- pico-sdk: 2.3.0
-   1.599 --> get_temp
-   1.661 <-- get_temp
-   1.661 <-- temp: 28.5 C
-   2.655 --> get_temp
-   2.717 <-- get_temp
-   2.717 <-- temp: 31.8 C
-   3.717 --> get_temp
-   3.779 <-- get_temp
-   3.779 <-- temp: 31.4 C
-   4.775 --> get_voltage
-   4.839 <-- get_voltage
-   4.839 <-- voltage: 0.019 V
+   0.558 --> help
+   0.559 <-- help
+   0.559 <-- help             list of commands
+   0.559 <-- timer_blink_start blink led by timer: timer_blink_start <period_ms>
+   0.559 <-- timer_blink_stop stop timer blink, number of toggles
+   0.559 <-- charge_on        charge RC circuit on GP22
+   0.559 <-- charge_off       discharge RC circuit
+   0.560 <-- tm_start         start telemetry: tm_start [<period_ms>]
+   0.560 <-- tm_stop          stop telemetry
+   0.560 <-- get_temp         chip temperature, degrees Celsius
+   0.560 <-- get_voltage      voltage on GP26, ADC input 0
+   0.560 <-- info             device passport
+   0.560 <-- uptime           time since reset
+   0.560 <-- pi_start         start pi calculation: pi_start [terms]
+   0.560 <-- pi               pi calculation state or result
+   0.560 <-- profiling        show stopwatches
+   0.560 <-- profiling_reset  reset stopwatches
+   0.560 <-- led_enable       turn LED on
+   0.560 <-- led_disable      turn LED off
+   0.620 <-- led_blink        blink LED
+   0.620 <-- led_period       set blink period: led_period <period_ms>
+   0.620 <-- button           button state and press count   
+   1.618 --> info
+   1.680 <-- info
+   1.680 <-- name: es-adc
+   1.680 <-- version: 1.0.0
+   1.680 <-- project: 311-adc
+   1.680 <-- repo: https://github.com/Demonik68/es-student
+   1.680 <-- board: pico
+   1.680 <-- serial: 07230C15195058CD
+   1.680 <-- chip: manufacturer 0x927, part 0x0002, revision 2
+   1.680 <-- pico-sdk: 2.3.0
+   2.678 --> get_temp
+   2.741 <-- get_temp
+   2.741 <-- temp: 32.3 C
+   3.740 --> get_temp
+   3.801 <-- get_temp
+   3.801 <-- temp: 31.8 C
+   4.799 --> get_temp
+   4.861 <-- get_temp
+   4.861 <-- temp: 32.3 C
+   5.856 --> get_voltage
+   5.918 <-- get_voltage
+   5.918 <-- voltage: 0.545 V
 итог: отправлено кадров 6, принято строк 17
