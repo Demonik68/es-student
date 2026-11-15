@@ -3,28 +3,28 @@
 устройство: 2e8a:000a
 серийный номер: 07230C15195058CD
 порт: COM18
-начало: 2026-11-14T10:31:23
+начало: 2026-11-15T15:33:00
    0.000 --> 
-   0.561 --> info
-   0.622 <-- info
-   0.622 <-- name: es-adc
-   0.623 <-- version: 1.0.0
-   0.623 <-- project: 311-adc
-   0.623 <-- repo: https://github.com/Demonik68/es-student
-   0.623 <-- board: pico
-   0.623 <-- serial: 07230C15195058CD
-   0.623 <-- chip: manufacturer 0x927, part 0x0002, revision 2
-   0.623 <-- pico-sdk: 2.3.0
-   1.623 --> get_temp
-   1.684 <-- get_temp
-   1.684 <-- temp: 30.9 C
-   2.679 --> get_temp
-   2.740 <-- get_temp
-   2.740 <-- temp: 32.3 C
-   3.742 --> get_temp
-   3.805 <-- get_temp
-   3.805 <-- temp: 32.3 C
-   4.742 --> get_voltage
-   4.805 <-- get_voltage
-   4.805 <-- voltage: 0.016 V
+   0.550 --> info
+   0.612 <-- info
+   0.612 <-- name: es-recorder
+   0.612 <-- version: 1.0.0
+   0.612 <-- project: 321-audio-recorder
+   0.612 <-- repo: https://github.com/Demonik68/es-student
+   0.612 <-- board: pico
+   0.613 <-- serial: 07230C15195058CD
+   0.613 <-- chip: manufacturer 0x927, part 0x0002, revision 2
+   0.613 <-- pico-sdk: 2.3.0
+   1.599 --> get_temp
+   1.661 <-- get_temp
+   1.661 <-- temp: 28.5 C
+   2.655 --> get_temp
+   2.717 <-- get_temp
+   2.717 <-- temp: 31.8 C
+   3.717 --> get_temp
+   3.779 <-- get_temp
+   3.779 <-- temp: 31.4 C
+   4.775 --> get_voltage
+   4.839 <-- get_voltage
+   4.839 <-- voltage: 0.019 V
 итог: отправлено кадров 6, принято строк 17
