@@ -1,0 +1,85 @@
+задание: 3.2.6
+проект: 321-audio-recorder
+устройство: 2e8a:000a
+серийный номер: 07230C15195058CD
+порт: COM18
+начало: 2026-11-15T17:10:13
+   0.000 --> 
+   0.563 --> help
+   0.564 <-- help
+   0.564 <-- help             list of commands
+   0.564 <-- wdt_enable       enable watchdog: wdt_enable <timeout_ms>
+   0.564 <-- hang             stop superloop until reset
+   0.564 <-- reset_reason     last reset cause and restart count
+   0.564 <-- generate_tone    generate test tone: generate_tone <Hz>
+   0.565 <-- stream_start     start ADC stream
+   0.565 <-- stream_stop      stop ADC stream
+   0.565 <-- dma_cap          capture DMA block: dma_cap <N>
+   0.565 <-- cap_start        capture: cap_start <N> <period_us>
+   0.565 <-- cap_dump         dump capture
+   0.565 <-- timer_blink_start blink led by timer: timer_blink_start <period_ms>
+   0.565 <-- timer_blink_stop stop timer blink, number of toggles
+   0.565 <-- charge_on        charge RC circuit on GP22
+   0.565 <-- charge_off       discharge RC circuit
+   0.565 <-- tm_start         start telemetry: tm_start [<period_ms>]
+   0.565 <-- tm_stop          stop telemetry
+   0.566 <-- get_temp         chip temperature, degrees Celsius
+   0.566 <-- get_voltage      voltage on GP26, ADC input 0
+   0.566 <-- info             device passport
+   0.566 <-- uptime           time since reset
+   0.566 <-- pi_start         start pi calculation: pi_start [terms]
+   0.566 <-- pi               pi calculation state or result
+   0.566 <-- profiling        show stopwatches
+   0.566 <-- profiling_reset  reset stopwatches
+   0.566 <-- led_enable       turn LED on
+   0.566 <-- led_disable      turn LED off
+   0.566 <-- led_blink        blink LED
+   0.566 <-- led_period       set blink period: led_period <period_ms>
+   0.625 <-- button           button state and press count
+   1.622 --> info
+   1.684 <-- info
+   1.684 <-- name: es-recorder
+   1.684 <-- version: 1.0.0
+   1.684 <-- project: 321-audio-recorder
+   1.684 <-- repo: https://github.com/Demonik68/es-student
+   1.684 <-- board: pico
+   1.684 <-- serial: 07230C15195058CD
+   1.684 <-- chip: manufacturer 0x927, part 0x0002, revision 2
+   1.684 <-- pico-sdk: 2.3.0
+   2.681 --> reset_reason
+   2.744 <-- reset_reason
+   2.744 <-- reset: other, restarts 0
+   3.242 --> wdt_enable 9000
+   3.305 <-- wdt_enable 9000
+   3.305 <-- error: timeout_ms must be 1..8388
+   3.800 --> wdt_enable 2000
+   3.862 <-- wdt_enable 2000
+   3.862 <-- wdt: enabled, timeout 2000 ms
+   4.357 --> uptime
+   4.419 <-- uptime
+   4.419 <-- uptime: 69353 ms
+   7.407 --> uptime
+   7.470 <-- uptime
+   7.470 <-- uptime: 72403 ms
+   7.966 --> hang
+   8.027 <-- hang
+   8.027 <-- hang: superloop stopped
+   9.023 --- ждём перезапуска платы
+  10.818 --- плата снова на связи
+  10.818 --> reset_reason
+  10.869 <-- reset_reason
+  10.869 <-- reset: watchdog, restarts 1
+  11.368 --> uptime
+  11.430 <-- uptime
+  11.431 <-- uptime: 1373 ms
+  11.928 --> info
+  11.991 <-- info
+  11.991 <-- name: es-recorder
+  11.991 <-- version: 1.0.0
+  11.991 <-- project: 321-audio-recorder
+  11.991 <-- repo: https://github.com/Demonik68/es-student
+  11.991 <-- board: pico
+  11.991 <-- serial: 07230C15195058CD
+  11.991 <-- chip: manufacturer 0x927, part 0x0002, revision 2
+  11.992 <-- pico-sdk: 2.3.0
+итог: отправлено кадров 12, принято строк 64
