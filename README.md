@@ -54,3 +54,4 @@
 [![3.2.5 Запись испытательного сигнала](https://github.com/Demonik68/es-student/actions/workflows/check-3-2-5.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-3-2-5.yml)
 [![3.2.6 Сторожевой таймер](https://github.com/Demonik68/es-student/actions/workflows/check-3-2-6.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-3-2-6.yml)
 [![3.2.7 Запись звука](https://github.com/Demonik68/es-student/actions/workflows/check-3-2-7.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-3-2-7.yml)
+[![3.2.7d Запись в 8 бит](https://github.com/Demonik68/es-student/actions/workflows/check-3-2-7d.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-3-2-7d.yml)

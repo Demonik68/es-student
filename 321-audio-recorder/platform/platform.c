@@ -1,3 +1,4 @@
+
 #include "platform/platform.h"
 
 #include "hardware/gpio.h"
@@ -30,6 +31,12 @@ static volatile bool block_running;
 static bool watchdog_reset;
 static uint32_t watchdog_restarts;
 
+
+static void adc_free_running(bool bits8)
+{
+    adc_fifo_setup(true, true, 1, false, bits8);
+}
+
 static void adc_one_shot(void)
 {
     adc_run(false);
@@ -53,16 +60,27 @@ bool platform_block_start(uint32_t count)
         return false;
 
     adc_select_input(ADC_CHANNEL);
-    adc_fifo_setup(true, true, 1, false, false);
+    adc_free_running(false);
     adc_set_clkdiv(48000000.0f / PLATFORM_SAMPLE_RATE_HZ - 1.0f);
+
     dma_channel_config config = dma_channel_get_default_config(block_channel);
     channel_config_set_transfer_data_size(&config, DMA_SIZE_16);
     channel_config_set_read_increment(&config, false);
     channel_config_set_write_increment(&config, true);
     channel_config_set_dreq(&config, DREQ_ADC);
+
     block_ready = false;
     block_running = true;
-    dma_channel_configure(block_channel, &config, block_samples, &adc_hw->fifo, count, true);
+
+    dma_channel_configure(
+        block_channel,
+        &config,
+        block_samples,
+        &adc_hw->fifo,
+        count,
+        true
+    );
+
     block_start_us = time_us_32();
     adc_run(true);
     return true;
@@ -100,12 +118,17 @@ static void on_stream_buffer(void)
         {
             dma_channel_acknowledge_irq0(stream_channels[i]);
 
-            dma_channel_set_write_addr(stream_channels[i], stream_buffers[i], false);
+            dma_channel_set_write_addr(
+                stream_channels[i],
+                stream_buffers[i],
+                false
+            );
 
             if (stream_ready[(i + 1) % 2])
             {
                 stream_overruns++;
             }
+
             stream_ready[i] = true;
         }
     }
@@ -113,28 +136,46 @@ static void on_stream_buffer(void)
 
 bool platform_stream_start(uint8_t bits)
 {
-    if (platform_adc_busy() || bits != 16)
+    if (platform_adc_busy() || (bits != 8 && bits != 16))
     {
         return false;
     }
 
-    stream_samples = PLATFORM_STREAM_BYTES / 2;
+   
+    stream_samples = (bits == 8)
+        ? PLATFORM_STREAM_BYTES
+        : PLATFORM_STREAM_BYTES / 2;
+
     adc_select_input(ADC_CHANNEL);
-    adc_fifo_setup(true, true, 1, false, false);
+    adc_free_running(bits == 8);
     adc_set_clkdiv(48000000.0f / PLATFORM_SAMPLE_RATE_HZ - 1.0f);
 
     for (int i = 0; i < 2; i++)
     {
         int next_channel = stream_channels[(i + 1) % 2];
 
-        dma_channel_config cfg = dma_channel_get_default_config(stream_channels[i]);
-        channel_config_set_transfer_data_size(&cfg, DMA_SIZE_16);
+        dma_channel_config cfg =
+            dma_channel_get_default_config(stream_channels[i]);
+
+        channel_config_set_transfer_data_size(
+            &cfg,
+            (bits == 8) ? DMA_SIZE_8 : DMA_SIZE_16
+        );
+
         channel_config_set_read_increment(&cfg, false);
         channel_config_set_write_increment(&cfg, true);
         channel_config_set_dreq(&cfg, DREQ_ADC);
         channel_config_set_chain_to(&cfg, next_channel);
-        dma_channel_configure(stream_channels[i], &cfg, stream_buffers[i], &adc_hw->fifo,
-                              stream_samples, false);
+
+        dma_channel_configure(
+            stream_channels[i],
+            &cfg,
+            stream_buffers[i],
+            &adc_hw->fifo,
+            stream_samples,
+            false
+        );
+
         dma_channel_set_irq0_enabled(stream_channels[i], true);
         stream_ready[i] = false;
     }
@@ -142,8 +183,10 @@ bool platform_stream_start(uint8_t bits)
     stream_overruns = 0;
     stream_next = 0;
     stream_running = true;
+
     dma_channel_start(stream_channels[0]);
     adc_run(true);
+
     return true;
 }
 
@@ -158,7 +201,9 @@ void platform_stream_stop(void)
 
     for (int i = 0; i < 2; i++)
     {
-        dma_channel_config cfg = dma_get_channel_config(stream_channels[i]);
+        dma_channel_config cfg =
+            dma_get_channel_config(stream_channels[i]);
+
         channel_config_set_chain_to(&cfg, stream_channels[i]);
         dma_channel_set_config(stream_channels[i], &cfg, false);
     }
@@ -169,6 +214,7 @@ void platform_stream_stop(void)
         dma_channel_abort(stream_channels[i]);
         dma_channel_acknowledge_irq0(stream_channels[i]);
     }
+
     adc_one_shot();
     stream_running = false;
 }
@@ -182,6 +228,7 @@ const uint8_t *platform_stream_next(uint32_t *samples)
 {
     if (!stream_running || !stream_ready[stream_next])
         return NULL;
+
     *samples = stream_samples;
     return stream_buffers[stream_next];
 }
@@ -197,10 +244,10 @@ uint32_t platform_stream_overruns(void)
     return stream_overruns;
 }
 
-
 void platform_init(void)
 {
     watchdog_reset = watchdog_enable_caused_reboot();
+
     if (watchdog_reset)
     {
         watchdog_hw->scratch[0]++;
@@ -209,9 +256,11 @@ void platform_init(void)
     {
         watchdog_hw->scratch[0] = 0;
     }
+
     watchdog_restarts = watchdog_hw->scratch[0];
 
     stdio_init_all();
+
     gpio_init(CHARGE_PIN);
     gpio_put(CHARGE_PIN, false);
     gpio_set_dir(CHARGE_PIN, GPIO_OUT);
@@ -224,18 +273,23 @@ void platform_init(void)
 
     gpio_init(LED_PIN);
     gpio_set_dir(LED_PIN, GPIO_OUT);
+
     gpio_init(BUTTON_PIN);
     gpio_set_dir(BUTTON_PIN, GPIO_IN);
     gpio_pull_up(BUTTON_PIN);
+
     adc_init();
     adc_gpio_init(ADC_PIN);
     adc_set_temp_sensor_enabled(true);
+
     block_channel = dma_claim_unused_channel(true);
     dma_channel_set_irq1_enabled(block_channel, true);
     irq_set_exclusive_handler(DMA_IRQ_1, on_block_done);
     irq_set_enabled(DMA_IRQ_1, true);
+
     stream_channels[0] = dma_claim_unused_channel(true);
     stream_channels[1] = dma_claim_unused_channel(true);
+
     irq_set_exclusive_handler(DMA_IRQ_0, on_stream_buffer);
     irq_set_enabled(DMA_IRQ_0, true);
 }
@@ -281,9 +335,11 @@ static volatile uint32_t blink_toggles;
 static bool on_blink(repeating_timer_t *timer)
 {
     (void)timer;
+
     blink_on = !blink_on;
     gpio_put(LED_PIN, blink_on);
     blink_toggles++;
+
     return true;
 }
 
@@ -294,7 +350,14 @@ bool platform_blink_start(uint32_t period_ms)
 
     platform_blink_stop();
     blink_toggles = 0;
-    blink_running = add_repeating_timer_ms(-(int32_t)period_ms, on_blink, NULL, &blink_timer);
+
+    blink_running = add_repeating_timer_ms(
+        -(int32_t)period_ms,
+        on_blink,
+        NULL,
+        &blink_timer
+    );
+
     return blink_running;
 }
 
@@ -305,8 +368,10 @@ uint32_t platform_blink_stop(void)
         cancel_repeating_timer(&blink_timer);
         blink_running = false;
     }
+
     blink_on = false;
     gpio_put(LED_PIN, false);
+
     return blink_toggles;
 }
 
@@ -322,42 +387,61 @@ static volatile bool capture_running;
 static bool on_capture(repeating_timer_t *timer)
 {
     (void)timer;
+
     uint32_t start = time_us_32();
+
     capture_times[capture_index] = start;
     capture_samples[capture_index++] = adc_read();
     capture_handler_us += time_us_32() - start;
+
     if (capture_index < capture_count)
         return true;
+
     capture_running = false;
     return false;
 }
 
 bool platform_adc_busy(void)
 {
-    return capture_running|| block_running|| stream_running;
+    return capture_running || block_running || stream_running;
 }
 
 bool platform_capture_start(uint32_t count, uint32_t period_us)
 {
-    if (platform_adc_busy() || count == 0 || count > PLATFORM_CAPTURE_MAX || period_us < 10)
+    if (platform_adc_busy() ||
+        count == 0 ||
+        count > PLATFORM_CAPTURE_MAX ||
+        period_us < 10)
+    {
         return false;
+    }
+
     adc_select_input(ADC_CHANNEL);
+
     capture_count = count;
     capture_period_us = period_us;
     capture_index = 0;
     capture_handler_us = 0;
     capture_running = true;
-    if (!add_repeating_timer_us(-(int64_t)period_us, on_capture, NULL, &capture_timer))
+
+    if (!add_repeating_timer_us(
+            -(int64_t)period_us,
+            on_capture,
+            NULL,
+            &capture_timer))
     {
         capture_running = false;
         return false;
     }
+
     return true;
 }
 
 bool platform_capture_done(void)
 {
-    return !capture_running && capture_count > 0 && capture_index == capture_count;
+    return !capture_running &&
+           capture_count > 0 &&
+           capture_index == capture_count;
 }
 
 void platform_capture_get(platform_capture_t *capture)
@@ -367,20 +451,30 @@ void platform_capture_get(platform_capture_t *capture)
         .count = capture_count,
         .period_us = capture_period_us,
     };
+
     if (capture_count < 2)
         return;
+
     capture->min_interval_us = UINT32_MAX;
+
     for (uint32_t i = 1; i < capture_count; i++)
     {
-        uint32_t interval = capture_times[i] - capture_times[i - 1];
+        uint32_t interval =
+            capture_times[i] - capture_times[i - 1];
+
         if (interval < capture->min_interval_us)
             capture->min_interval_us = interval;
+
         if (interval > capture->max_interval_us)
             capture->max_interval_us = interval;
     }
-    uint32_t elapsed = capture_times[capture_count - 1] - capture_times[0];
+
+    uint32_t elapsed =
+        capture_times[capture_count - 1] - capture_times[0];
+
     if (elapsed)
-        capture->handler_percent = 100.0f * capture_handler_us / elapsed;
+        capture->handler_percent =
+            100.0f * capture_handler_us / elapsed;
 }
 
 bool platform_tone_set(uint32_t freq_hz)
@@ -397,11 +491,12 @@ bool platform_tone_set(uint32_t freq_hz)
     }
 
     uint32_t period = TONE_COUNT_HZ / freq_hz;
+
     pwm_set_wrap(pwm_gpio_to_slice_num(TONE_PIN), period - 1);
     pwm_set_gpio_level(TONE_PIN, period / 2);
+
     return true;
 }
-
 
 bool platform_watchdog_enable(uint32_t timeout_ms)
 {
@@ -410,8 +505,8 @@ bool platform_watchdog_enable(uint32_t timeout_ms)
         return false;
     }
 
-    // true — не считать, пока ядро остановлено отладчиком
     watchdog_enable(timeout_ms, true);
+
     return true;
 }
 

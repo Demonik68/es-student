@@ -17,7 +17,7 @@ void stream_task_init(stream_task_callback_t on_frame)
 
 bool stream_task_start(uint8_t bits)
 {
-    if (state == STREAM_STATE_RUN || send_frame == NULL || !platform_stream_start(bits))
+    if (state == STREAM_STATE_RUN || send_frame == NULL || (bits != 8 && bits != 16) || !platform_stream_start(bits))
         return false;
     stream_bits = bits;
     frames = 0;
