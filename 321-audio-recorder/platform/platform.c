@@ -384,21 +384,29 @@ static volatile uint32_t capture_index;
 static volatile uint32_t capture_handler_us;
 static volatile bool capture_running;
 
+
 static bool on_capture(repeating_timer_t *timer)
 {
     (void)timer;
 
     uint32_t start = time_us_32();
+   
+    uint16_t sample = adc_read();
 
     capture_times[capture_index] = start;
-    capture_samples[capture_index++] = adc_read();
+    capture_samples[capture_index] = sample;
+
+    capture_index++;
+
     capture_handler_us += time_us_32() - start;
 
-    if (capture_index < capture_count)
-        return true;
+    if (capture_index >= capture_count)
+    {
+        capture_running = false;
+        return false;
+    }
 
-    capture_running = false;
-    return false;
+    return true;
 }
 
 bool platform_adc_busy(void)
