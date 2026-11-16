@@ -57,3 +57,4 @@
 [![3.2.7d Запись в 8 бит](https://github.com/Demonik68/es-student/actions/workflows/check-3-2-7d.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-3-2-7d.yml)
 
 [![3.3.1 Драйверы линии](https://github.com/Demonik68/es-student/actions/workflows/check-3-3-1.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-3-3-1.yml)
+[![3.3.2 Петля и перемычка](https://github.com/Demonik68/es-student/actions/workflows/check-3-3-2.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-3-3-2.yml)
