@@ -1,0 +1,69 @@
+задание: 3.2.7
+проект: 321-audio-recorder
+устройство: 2e8a:000a
+серийный номер: 07230C15195058CD
+порт: COM18
+начало: 2026-11-16T21:06:51
+   0.000 --> 
+   0.550 --> help
+   0.551 <-- help
+   0.551 <-- help             list of commands
+   0.552 <-- mic_bias         microphone DC bias
+   0.552 <-- mic_level        microphone level: mic_level [<ms>]
+   0.552 <-- wdt_enable       enable watchdog: wdt_enable <timeout_ms>
+   0.552 <-- hang             stop superloop until reset
+   0.552 <-- reset_reason     last reset cause and restart count
+   0.552 <-- generate_tone    generate test tone: generate_tone <Hz>
+   0.552 <-- stream_start     start ADC stream
+   0.552 <-- stream_stop      stop ADC stream
+   0.552 <-- dma_cap          capture DMA block: dma_cap <N>
+   0.553 <-- cap_start        capture: cap_start <N> <period_us>
+   0.553 <-- cap_dump         dump capture
+   0.553 <-- timer_blink_start blink led by timer: timer_blink_start <period_ms>
+   0.553 <-- timer_blink_stop stop timer blink, number of toggles
+   0.553 <-- charge_on        charge RC circuit on GP22
+   0.553 <-- charge_off       discharge RC circuit
+   0.553 <-- tm_start         start telemetry: tm_start [<period_ms>]
+   0.553 <-- tm_stop          stop telemetry
+   0.554 <-- get_temp         chip temperature, degrees Celsius
+   0.554 <-- get_voltage      voltage on GP26, ADC input 0
+   0.554 <-- info             device passport
+   0.554 <-- uptime           time since reset
+   0.554 <-- pi_start         start pi calculation: pi_start [terms]
+   0.554 <-- pi               pi calculation state or result
+   0.554 <-- profiling        show stopwatches
+   0.554 <-- profiling_reset  reset stopwatches
+   0.554 <-- led_enable       turn LED on
+   0.554 <-- led_disable      turn LED off
+   0.554 <-- led_blink        blink LED
+   0.611 <-- led_period       set blink period: led_period <period_ms>
+   0.611 <-- button           button state and press count
+   1.608 --> info
+   1.670 <-- info
+   1.670 <-- name: es-recorder
+   1.670 <-- version: 1.0.0
+   1.670 <-- project: 321-audio-recorder
+   1.670 <-- repo: https://github.com/Demonik68/es-student
+   1.670 <-- board: pico
+   1.670 <-- serial: 07230C15195058CD
+   1.670 <-- chip: manufacturer 0x927, part 0x0002, revision 2
+   1.670 <-- pico-sdk: 2.3.0
+   2.665 --> mic_bias
+   2.728 <-- mic_bias
+   2.789 <-- mic: bias 1.241 V
+   3.227 --> mic_level
+   3.289 <-- mic_level
+   3.350 <-- mic: level 4.7 mV rms, peak 20.9 mV, 100 ms
+   3.784 --> mic_level 50
+   3.847 <-- mic_level 50
+   3.847 <-- mic: level 4.4 mV rms, peak 16.9 mV, 50 ms
+   4.346 --> mic_level 185
+   4.408 <-- mic_level 185
+   4.596 <-- mic: level 4.6 mV rms, peak 20.1 mV, 184 ms
+   4.906 --> mic_level 0
+   4.969 <-- mic_level 0
+   4.969 <-- error: ms must be 1..185
+   5.465 --> mic_level 200
+   5.527 <-- mic_level 200
+   5.527 <-- error: ms must be 1..185
+итог: отправлено кадров 9, принято строк 53

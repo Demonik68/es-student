@@ -240,6 +240,11 @@ void platform_init(void)
     irq_set_enabled(DMA_IRQ_0, true);
 }
 
+float platform_adc_volts(float code)
+{
+    return code * ADC_VREF_V / ADC_LEVELS;
+}
+
 float platform_temp_read(void)
 {
     adc_select_input(ADC_TEMP_CHANNEL);
