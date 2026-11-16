@@ -390,14 +390,11 @@ static bool on_capture(repeating_timer_t *timer)
     (void)timer;
 
     uint32_t start = time_us_32();
-   
-    uint16_t sample = adc_read();
 
     capture_times[capture_index] = start;
-    capture_samples[capture_index] = sample;
+    capture_samples[capture_index] = adc_read();
 
     capture_index++;
-
     capture_handler_us += time_us_32() - start;
 
     if (capture_index >= capture_count)
@@ -432,14 +429,10 @@ bool platform_capture_start(uint32_t count, uint32_t period_us)
     capture_handler_us = 0;
     capture_running = true;
 
-    if (!add_repeating_timer_us(
-            -(int64_t)period_us,
-            on_capture,
-            NULL,
-            &capture_timer))
+    if (!add_repeating_timer_us(-(int64_t)period_us, on_capture, NULL, &capture_timer))
     {
-        capture_running = false;
-        return false;
+    capture_running = false;
+    return false;
     }
 
     return true;
