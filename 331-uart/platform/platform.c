@@ -4,6 +4,7 @@
 #include "hardware/adc.h"
 #include "hardware/uart.h"
 #include "hardware/irq.h"
+#include "hardware/dma.h"
 
 static const uint LED_PIN = 25;
 static const uint BUTTON_PIN = 15;
@@ -21,6 +22,42 @@ static const uint BUTTON_PIN = 15;
 
 
 #define UART_BAUD 115200
+
+typedef enum {
+    ADC_FREE,
+    ADC_BLOCK,
+} adc_user_t;
+
+static volatile adc_user_t adc_user;
+static int block_channel;
+static uint16_t block_samples[PLATFORM_BLOCK_MAX];
+static uint32_t block_start_us;
+static volatile uint32_t block_end_us;
+static volatile bool block_ready;
+
+static void adc_free_running(void)
+{
+    adc_select_input(ADC_CHANNEL);
+    adc_fifo_setup(true, true, 1, false, false);
+    adc_set_clkdiv(0);
+}
+
+static void adc_one_shot(void)
+{
+    adc_run(false);
+    adc_fifo_drain();
+    adc_fifo_setup(false, false, 0, false, false);
+    adc_set_clkdiv(0);
+}
+
+static void on_block_done(void)
+{
+    dma_channel_acknowledge_irq1(block_channel);
+    block_end_us = time_us_32();
+    adc_one_shot();
+    block_ready = true;
+    adc_user = ADC_FREE;
+}
 
 static uart_inst_t *uart_of(platform_uart_t uart)
 {
@@ -70,6 +107,11 @@ void platform_init(void)
 
     irq_set_exclusive_handler(UART0_IRQ, on_uart0_rx);
     irq_set_enabled(UART0_IRQ, true);
+
+    block_channel = dma_claim_unused_channel(true);
+    dma_channel_set_irq1_enabled(block_channel, true);
+    irq_set_exclusive_handler(DMA_IRQ_1, on_block_done);
+    irq_set_enabled(DMA_IRQ_1, true);
 }
 
 void platform_led_set(bool on)
@@ -87,6 +129,48 @@ float platform_voltage_read(void)
     adc_select_input(ADC_CHANNEL);
     return adc_read() * (3.3f / 4096.0f);
 }
+
+bool platform_block_start(uint32_t count)
+{
+    if (adc_user != ADC_FREE || count == 0 || count > PLATFORM_BLOCK_MAX)
+    {
+        return false;
+    }
+
+    adc_free_running();
+
+    // 16-битные передачи из одного адреса в растущий, по запросу АЦП
+    dma_channel_config cfg = dma_channel_get_default_config(block_channel);
+    channel_config_set_transfer_data_size(&cfg, DMA_SIZE_16);
+    channel_config_set_read_increment(&cfg, false);
+    channel_config_set_write_increment(&cfg, true);
+    channel_config_set_dreq(&cfg, DREQ_ADC);
+
+    block_ready = false;
+    adc_user = ADC_BLOCK;
+
+    // куда, откуда, сколько; true — запустить сразу
+    dma_channel_configure(block_channel, &cfg, block_samples, &adc_hw->fifo, count, true);
+    block_start_us = time_us_32();
+    adc_run(true);
+    return true;
+}
+
+bool platform_block_done(void)
+{
+    return block_ready;
+}
+
+const uint16_t *platform_block_samples(void)
+{
+    return block_samples;
+}
+
+uint32_t platform_block_time_us(void)
+{
+    return block_end_us - block_start_us;
+}
+
 
 void platform_line_set(platform_line_mode_t mode, bool high)
 {
