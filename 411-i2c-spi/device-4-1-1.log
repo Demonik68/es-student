@@ -1,0 +1,14 @@
+задание: 4.1.1
+проект: 411-i2c-spi
+устройство: 2e8a:000a
+серийный номер: 07230C15195058CD
+порт: COM18
+начало: 2026-11-27T10:36:36
+   0.000 --> help
+   0.001 <-- help
+   0.001 <-- help             list of commands
+   0.002 <-- i2c_write_reg    <address> <register> <value>
+   0.002 <-- i2c_read_reg     <address> <register>
+   0.003 --> i2c_read_reg 0x77 0xD0
+   0.003 <-- i2c_read_reg 0x77 0xD0
+   0.004 <-- error: i2c transfer
