@@ -63,3 +63,4 @@
 [![3.3.5 Осциллограмма линии UART](https://github.com/Demonik68/es-student/actions/workflows/check-3-3-5.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-3-3-5.yml)
 
 [![4.1.1 Ведущий I²C](https://github.com/Demonik68/es-student/actions/workflows/check-4-1-1.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-4-1-1.yml)
+[![4.1.2 Ведущий SPI](https://github.com/Demonik68/es-student/actions/workflows/check-4-1-2.yml/badge.svg)](https://github.com/Demonik68/es-student/actions/workflows/check-4-1-2.yml)
